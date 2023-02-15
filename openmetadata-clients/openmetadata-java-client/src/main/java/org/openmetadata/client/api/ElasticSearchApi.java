@@ -11,6 +11,11 @@ import java.util.Map;
 import org.openmetadata.client.ApiClient;
 import org.openmetadata.client.EncodingUtils;
 
+public class Globals {
+  public static String ind = "index";
+  public static String del = "deleted";
+}
+
 public interface ElasticSearchApi extends ApiClient.Api {
 
   /**
@@ -73,7 +78,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Response getAggregateFields(@QueryMap(encoded = true) Map<String, Object> queryParams);
+  Response getAggregateFields(@QueryMap Map<String, Object> queryParams);
 
   /**
    * Get Aggregated Fields Get Aggregated Fields from Entities. Note, this is equivalent to the other <code>
@@ -95,7 +100,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Response getAggregateFieldsWithHttpInfo(@QueryMap(encoded = true) Map<String, Object> queryParams);
+  Response getAggregateFieldsWithHttpInfo(@QueryMap Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the <code>getAggregateFields</code> method in a fluent
@@ -103,7 +108,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
    */
   class GetAggregateFieldsQueryParams extends HashMap<String, Object> {
     public GetAggregateFieldsQueryParams index(final String value) {
-      put("index", EncodingUtils.encode(value));
+      put(Globals.ind, EncodingUtils.encode(value));
       return this;
     }
 
@@ -118,7 +123,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
     }
 
     public GetAggregateFieldsQueryParams deleted(final String value) {
-      put("deleted", EncodingUtils.encode(value));
+      put(Globals.del, EncodingUtils.encode(value));
       return this;
     }
   }
@@ -219,7 +224,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Response getSuggestedEntities(@QueryMap(encoded = true) Map<String, Object> queryParams);
+  Response getSuggestedEntities(@QueryMap Map<String, Object> queryParams);
 
   /**
    * Suggest Entities Get suggested entities used for auto-completion. Note, this is equivalent to the other <code>
@@ -251,7 +256,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Response getSuggestedEntitiesWithHttpInfo(@QueryMap(encoded = true) Map<String, Object> queryParams);
+  Response getSuggestedEntitiesWithHttpInfo(@QueryMap Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the <code>getSuggestedEntities</code> method in a fluent
@@ -264,7 +269,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
     }
 
     public GetSuggestedEntitiesQueryParams index(final String value) {
-      put("index", EncodingUtils.encode(value));
+      put(Globals.ind, EncodingUtils.encode(value));
       return this;
     }
 
@@ -289,7 +294,7 @@ public interface ElasticSearchApi extends ApiClient.Api {
     }
 
     public GetSuggestedEntitiesQueryParams deleted(final String value) {
-      put("deleted", EncodingUtils.encode(value));
+      put(Globals.del, EncodingUtils.encode(value));
       return this;
     }
   }
@@ -489,12 +494,12 @@ public interface ElasticSearchApi extends ApiClient.Api {
     }
 
     public SearchEntitiesWithQueryQueryParams index(final String value) {
-      put("index", EncodingUtils.encode(value));
+      put(Globals.ind, EncodingUtils.encode(value));
       return this;
     }
 
     public SearchEntitiesWithQueryQueryParams deleted(final Boolean value) {
-      put("deleted", EncodingUtils.encode(value));
+      put(Globals.del, EncodingUtils.encode(value));
       return this;
     }
 

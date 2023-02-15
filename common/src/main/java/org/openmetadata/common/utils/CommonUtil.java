@@ -45,6 +45,14 @@ import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 
+
+class FailedtoCalculateException extends Exception {
+  public FailedtoCalculateException(String s)
+  {
+      super(s);
+  }
+}
+
 @Slf4j
 public final class CommonUtil {
 
@@ -147,7 +155,7 @@ public final class CommonUtil {
       byte[] hmacSha256 = mac.doFinal(message.getBytes(StandardCharsets.UTF_8));
       return Base64.getEncoder().encodeToString(hmacSha256);
     } catch (Exception e) {
-      throw new RuntimeException("Failed to calculate " + HMAC_SHA256_ALGORITHM, e);
+      throw new FailedtoCalculateException("Failed to calculate " + HMAC_SHA256_ALGORITHM);
     }
   }
 
